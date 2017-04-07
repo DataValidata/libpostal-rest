@@ -25,7 +25,7 @@ func main() {
 }
 
 func HealthHandler(w http.ResponseWriter, r *http.Request) {
-  w.Write("OK")
+  fmt.Fprintln(w, "OK")
 }
 
 func ExpandHandler(w http.ResponseWriter, r *http.Request) {
