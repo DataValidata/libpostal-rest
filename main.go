@@ -17,10 +17,15 @@ type Request struct {
 
 func main() {
 	r := mux.NewRouter()
+	r.HandleFunc("/", HealthHandler).Methods("GET")
 	r.HandleFunc("/expand", ExpandHandler).Methods("POST")
 	r.HandleFunc("/parser", ParserHandler).Methods("POST")
 	fmt.Println("listening on port 8080")
 	http.ListenAndServe(":8080", r)
+}
+
+func HealthHandler(w http.ResponseWriter, r *http.Request) {
+  w.Write("OK")
 }
 
 func ExpandHandler(w http.ResponseWriter, r *http.Request) {
